@@ -1,0 +1,41 @@
+{
+  "name": "complete-me",
+  "version": "1.0.0",
+  "description": "complete me",
+  "keywords": [
+    "Node.js"
+  ],
+  "author": {
+    "name": "Jagon team",
+    "email": "",
+    "url": "https://github.com/jagonteam/complete-me"
+  },
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 1.2.0"
+  },
+  "dependencies": {
+    "body-parser": "~1.10.1",
+    "express": "~4.10.7",
+    "fs": "0.0.2",
+    "http": "~0.0.0",
+    "method-override": "~1.0.0",
+    "path": "~0.4.9",
+    "socket.io": "~1.2.1",
+    "winston": "~0.8.3"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-jsbeautifier": "0.0.4",
+    "gulp-util": "~3.0.4",
+    "run-sequence": "~1.0.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "gulp test"
+  },
+  "bundleDependencies": [],
+  "private": false,
+  "main": "app.js"
+}
