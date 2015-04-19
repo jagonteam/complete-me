@@ -6,6 +6,6 @@ config(['$routeProvider', function($routeProvider) {
         controller: 'QuizController'
     }).
     otherwise({
-        redirectTo: 'quiz'
+        redirectTo: '/quiz'
     });
 }]);
