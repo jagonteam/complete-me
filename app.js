@@ -38,4 +38,4 @@ server.listen(app.get('port'), process.env.OPENSHIFT_NODEJS_IP || server.INADDR_
 
 // Start the game !
 // ----------------
-new game.Task(io.sockets);
+new game.Game(io.sockets);

@@ -1,6 +1,4 @@
-<h2>Quiz !</h2>
-
-<p>{{question.text}}</p>
+<h2>{{question.text}}</h2>
 
 <form ng-if="question.needResponse" ng-submit="submitAnswer()">
     <input type="text" ng-model="answer.text" placeholder="{{answer.placeholder}}" />
