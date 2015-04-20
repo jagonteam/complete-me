@@ -1,5 +1,5 @@
 {
 	"indentChar": " ",
-	"indentSize": 2,
+	"indentSize": 4,
 	"breakChainedMethod": false
 }
