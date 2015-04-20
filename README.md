@@ -13,6 +13,15 @@ Then, download dev dependencies :
     npm install
     bower install
 
+If you do not have Elasticsearch :
+
+    wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.1.deb
+    sudo dpkg -i elasticsearch-1.5.1.deb
+
+Start Elasticsearch :
+    
+    sudo service elasticsearch start    
+
 Now, you need to convert ES6 sources to ES5.
 
     gulp transpilation
