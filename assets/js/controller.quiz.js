@@ -5,7 +5,9 @@ angular.module('completeMe')
             // default values
             $scope.question = {
                 text: "En attente de la prochaine question...",
-                needResponse: false
+                needResponse: false,
+                time: 60000,
+                startTime: new Date().getTime()
             };
             $scope.answer = {
                 placeholder: "Entez votre réponse ici !"
@@ -61,5 +63,13 @@ angular.module('completeMe')
                 });
             });
 
+            /**
+             * Get current progress according to current phase
+             */
+            $scope.currentProgression = function() {
+                var maxTime = $scope.question.startTime + $scope.question.time;
+                $scope.progression = maxTime / $scope.question.time;
+                return $scope.progression;
+            }
         }
     ]);
