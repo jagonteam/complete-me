@@ -12,6 +12,10 @@ angular.module('completeMe')
             $scope.answer = {
                 placeholder: "Entez votre réponse ici !"
             };
+            $scope.currentProgression = 0;
+            setInterval(function() {
+                updateCurrentProgression();
+            }, 500);
 
             // open socket connection
             var currentLocationRoot = $location.protocol() + '://' + $location.host() + ':' + $location.port();
@@ -47,7 +51,7 @@ angular.module('completeMe')
                 $scope.answer.text = "";
 
                 // set dummy placeholdert
-                $scope.answer.placeholder = "Presque, essayez encore !"
+                $scope.answer.placeholder = "Presque, essayez encore !";
             }
 
             /**
@@ -66,10 +70,11 @@ angular.module('completeMe')
             /**
              * Get current progress according to current phase
              */
-            $scope.currentProgression = function() {
-                var maxTime = $scope.question.startTime + $scope.question.time;
-                $scope.progression = maxTime / $scope.question.time;
-                return $scope.progression;
+            updateCurrentProgression = function() {
+                var currentProgressTime = new Date().getTime() - $scope.question.startTime;
+                $scope.$apply(function() {
+                    $scope.currentProgression = (100 * currentProgressTime) / $scope.question.time;
+                });
             }
         }
     ]);
