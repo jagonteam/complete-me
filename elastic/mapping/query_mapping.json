@@ -1,0 +1,10 @@
+{
+  "query": {
+    "properties": {
+      "text": {
+        "type":"string",
+        "index":"not_analyzed"
+      }
+    }
+  }
+}
