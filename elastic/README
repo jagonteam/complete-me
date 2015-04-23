@@ -1,0 +1,37 @@
+== Initialize Elastic ==
+
+1. Copy elastisearch.yml into your elastic conf directory
+2. Restart service elastic : sudo service elasticsearch restart
+3. Initialize elastic indexes : ./init.sh localhost 9200
+
+== Search example ==
+
+GET http://localhost:9200/response/response/_search
+{
+  "query": {
+    "match" : {
+      "text" : {
+        "query" : "ArMeS",
+        "fuzziness": "AUTO"
+      }
+    }
+  }
+}
+
+will return
+
+{
+  "_index": "response_1",
+  "_type": "response",
+  "_id": "AUzmq44s7fh1DRT02WJ8",
+  "_score": 1.058217,
+  "_source": {
+     "text": "une arme",
+     "rank": 3,
+     "query": [
+        {
+           "text": "Comment se procurer"
+        }
+     ]
+  }
+}
