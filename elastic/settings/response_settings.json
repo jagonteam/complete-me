@@ -1,0 +1,26 @@
+{
+  "index": {
+    "number_of_replicas": "0",
+    "analysis": {
+      "analyzer": {
+        "default": {
+          "type": "custom",
+          "tokenizer": "whitespace",
+          "filter": ["lowercase","asciifolding","worddelimiter","elision"]
+        }
+      },
+      "filter": {
+         "elision" : {
+             "type" : "elision",
+             "articles" : ["l", "m", "t", "qu", "n", "s", "j"]
+         },
+         "worddelimiter" : {
+             "type" : "word_delimiter",
+             "catenate_words" : true,
+             "catenate_numbers" : true,
+             "split_on_numerics" : false
+         }
+       }
+    }
+  }
+}
