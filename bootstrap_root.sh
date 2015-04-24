@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# This file install dev tools on the virtual machine
+#
+
 # constants
 ES_VERSION=1.5.1
 
@@ -12,9 +16,9 @@ apt-get update
 apt-get install -y vim curl git byobu build-essential htop
 
 
-	#========#
-	# nodejs #
-	#========#
+	#=================#
+	#     nodejs      #
+	#=================#
 
 apt-get install -y python-software-properties python g++ make
 add-apt-repository -y ppa:chris-lea/node.js
@@ -27,15 +31,15 @@ npm install -g bower gulp
 chown -R vagrant:vagrant /home/vagrant/.npm
 
 
-	#===============#
-	# Elasticsearch #
-	#===============#
+	#=================#
+	#     Elastic     #
+	#=================#
 
 ## install java
 apt-get install -y openjdk-7-jre-headless
  
 ## install elasticsearch
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-${ES_VERSION}.deb
+wget -nv https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-${ES_VERSION}.deb
 dpkg -i elasticsearch-${ES_VERSION}.deb
 service elasticsearch start
  
