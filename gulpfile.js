@@ -69,13 +69,9 @@ gulp.task('run-test', function() {
 });
 
 gulp.task('test', function() {
-  runSequence(
-    'transpilation', 'run-test'
-  );
+  runSequence('transpilation', 'run-test');
 });
 
 gulp.task('default', function() {
-  runSequence(
-    ['prettify-code', 'transpilation']
-  );
+  runSequence('prettify-code', 'transpilation');
 });
