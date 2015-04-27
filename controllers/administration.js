@@ -9,7 +9,7 @@ import async from 'async';
 import {
     GoogleCrawler
 }
-from '../tools/crawler/google-crawler';
+from '../build/crawler/google-crawler';
 
 import logger from '../utils/logger';
 
