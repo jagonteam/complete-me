@@ -1,6 +1,16 @@
-<h2>{{question.text}}</h2>
+<div ng-controller="QuizController">
+  <h2>{{question.text}}</h2>
 
-<form ng-if="question.needResponse" ng-submit="submitAnswer()">
-    <input type="text" ng-model="answer.text" placeholder="{{answer.placeholder}}" />
-    <input type="submit" id="submit" value="Envoyer !" />
-</form>
+  <div ng-if="!question.needResponse" layout="row" layout-sm="column" layout-align="space-around">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+
+  <div ng-if="question.needResponse">
+    <form ng-submit="submitAnswer()">
+        <input type="text" ng-model="answer.text" placeholder="{{answer.placeholder}}" />
+        <input type="submit" id="submit" value="Envoyer !" />
+    </form>
+
+    <md-progress-linear class="md-accent" md-mode="query" value="{{progress-linear-determinate-value}}">
+  </div>
+</div>
