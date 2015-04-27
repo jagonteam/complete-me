@@ -31,18 +31,25 @@ npm install -g bower gulp
 chown -R vagrant:vagrant /home/vagrant/.npm
 
 
+	#================#
+	#     mongodb    #
+	#================#
+
+apt-get install -y mongodb-server
+
+
 	#=================#
 	#     Elastic     #
 	#=================#
 
 ## install java
 apt-get install -y openjdk-7-jre-headless
- 
+
 ## install elasticsearch
 wget -nv https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-${ES_VERSION}.deb
 dpkg -i elasticsearch-${ES_VERSION}.deb
 service elasticsearch start
- 
+
 ## install es plugins
 X_PROXY=
 if [ ! -z "${HTTP_PROXY}" ]
@@ -53,8 +60,8 @@ then
 	X_PROXY="`echo '-DproxyPort='``echo ${proxy_port}` `echo '-DproxyHost='``echo ${proxy_host}`"
 fi
 
-/usr/share/elasticsearch/bin/plugin ${X_PROXY} -install mobz/elasticsearch-head 
-/usr/share/elasticsearch/bin/plugin ${X_PROXY} -install elasticsearch/marvel/latest 
+/usr/share/elasticsearch/bin/plugin ${X_PROXY} -install mobz/elasticsearch-head
+/usr/share/elasticsearch/bin/plugin ${X_PROXY} -install elasticsearch/marvel/latest
 
 ## restart es
 service elasticsearch restart

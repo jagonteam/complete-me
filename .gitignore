@@ -30,10 +30,12 @@ node_modules
 .vagrant
 
 # bower
-inc/
+client/inc/
 
 # generated sources
 build/
+
+.gitconfig
 
 # OS generated files #
 ######################

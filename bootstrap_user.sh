@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 #
-# This file configure dev tools on the virtual machine, as a developer 
-# should to start working on this project. 
+# This file configure dev tools on the virtual machine, as a developer
+# should to start working on this project.
 #
 
 cd /vagrant
@@ -28,12 +28,12 @@ gulp transpilation
 
 
 echo -e " \n \n "
-echo "______________________________________________________________________________"
-echo "Congratulation ! You can now launch node server with 'node app.js' in $(pwd)"
+echo "____________________________________________________________________________________"
+echo "Congratulation ! You can now launch node server with 'node server/app.js' in $(pwd)"
 echo "---"
 echo "Forwarded ports (available on your host) :"
 echo "  * node server  : 8080"
 echo "  * elastic HTTP : 9200"
 echo "  * elastic TCP  : 9300"
-echo "______________________________________________________________________________"
+echo "____________________________________________________________________________________"
 echo -e " \n "

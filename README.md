@@ -12,9 +12,9 @@ Start the application, in VM :
 
     vagrant ssh
     cd /vagrant
-    node app.js
+    node server/app.js
 
-Open your browser : http://127.0.0.1:8080
+Open your browser : http://127.0.0.1:9000
 
 ### Old school mode
 
@@ -35,8 +35,8 @@ If you do not have Elasticsearch :
     sudo dpkg -i elasticsearch-1.5.1.deb
 
 Start Elasticsearch :
-    
-    sudo service elasticsearch start    
+
+    sudo service elasticsearch start
 
 Now, you need to convert ES6 sources to ES5.
 
@@ -44,9 +44,9 @@ Now, you need to convert ES6 sources to ES5.
 
 You can now start server :)
 
-    node app.js
+    node server/app.js
 
-Open your browser, and browse to http://127.0.0.1:8080
+Open your browser, and browse to http://127.0.0.1:9000
 
 
 ## Re-index answers
@@ -57,5 +57,5 @@ If authentication is not enabled, admin API won't be exposed.
 
 To start crawling, you have to hit the exposed API, with auth :
 
-    curl '127.0.0.1:8080/admin/api/crawl' --user xavier:xavier
+    curl '127.0.0.1:9000/admin/api/crawl' --user xavier:xavier
 

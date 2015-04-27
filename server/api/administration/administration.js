@@ -9,9 +9,10 @@ import async from 'async';
 import {
     GoogleCrawler
 }
-from '../build/crawler/google-crawler';
+from '../../tools/crawler/google-crawler.js';
 
-import logger from '../utils/logger';
+var logger = require('../../utils/logger');
+
 
 // prefix for all admin logs
 const LOG_TAG = "[admin] ";

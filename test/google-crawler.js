@@ -3,7 +3,7 @@ var assert = require("assert");
 import {
     GoogleCrawler
 }
-from "../build/crawler/google-crawler";
+from "../build/tools/crawler/google-crawler";
 
 describe('GoogleCrawler', function() {
     describe('#getAutocompleteForQuery()', function() {
