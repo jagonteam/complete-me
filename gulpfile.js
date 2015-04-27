@@ -1,17 +1,24 @@
-var gulp         = require('gulp'),
-    prettify     = require('gulp-jsbeautifier'),
+// for gulp-mocha to compile es6 test on the fly
+require('babel-core/register');
+
+var gulp        = require('gulp'),
+    prettify    = require('gulp-jsbeautifier'),
     runSequence = require('run-sequence'),
     gutil       = require('gulp-util'),
-    babel       = require('gulp-babel');
+    babel       = require('gulp-babel'),
+    mocha       = require('gulp-mocha');
 
 var paths = {
   scripts: [
     'assets/js/*.js',
     'server.js',
-    'controllers/*.js',
-    'utils/*.js'
-  ]
-}
+    'controllers/**/*.js',
+    'utils/**/*.js',
+    'tools/**/*.js',
+    'test/**/*.js'
+  ],
+  test: 'test/**/*.js'
+};
 
 gulp.task('verify-js', function() {
   gulp.src(['assets/js/*.js'])
@@ -49,10 +56,22 @@ gulp.task('prettify-code', function() {
 });
 
 gulp.task('transpilation', function() {
-  gulp.src(['controllers/*.js'])
+  gulp.src(['controllers/**/*.js', 'tools/**/*.js'])
     .pipe(babel({highlightCode: false}))
     .pipe(gulp.dest('build'))
     .on('error', gutil.log);
+});
+
+gulp.task('run-test', function() {
+  gulp.src(paths.test, {read: false})
+    .pipe(mocha({reporter: 'spec'}))
+    .on('error', gutil.log);
+});
+
+gulp.task('test', function() {
+  runSequence(
+    'transpilation', 'run-test'
+  );
 });
 
 gulp.task('default', function() {

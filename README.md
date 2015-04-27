@@ -48,3 +48,13 @@ You can now start server :)
 
 Open your browser, and browse to http://127.0.0.1:8080
 
+
+## Re-index answers
+
+To re-index answers, you need to enable http authentication. To do that, copy `private/users.htpasswd.example` to `private/users.htpasswd`.
+Re-start node server, you'll see an information message : "Using http authentification file".
+
+To start crawling, you have to hit the exposed API, with auth :
+
+    curl '127.0.0.1:8080/admin/api/crawl' --user xavier:xavier
+
