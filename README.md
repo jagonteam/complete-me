@@ -2,6 +2,22 @@
 
 ## Quick start
 
+### With vagrant (get a development env in 2 minutes)
+
+Launch the VM
+
+    vagrant up
+
+Start the application, in VM :
+
+    vagrant ssh
+    cd /vagrant
+    node app.js
+
+Open your browser : http://127.0.0.1:8080
+
+### Old school mode
+
 After cloning the repo, install building dependencies (assuming you installed node) :
 
     npm update -g npm

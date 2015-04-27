@@ -24,7 +24,8 @@ var logger = new winston.Logger({
             level: 'verbose',
             handleExceptions: true,
             json: false,
-            colorize: true
+            colorize: true,
+            timestamp: true
         })
     ],
     exitOnError: false

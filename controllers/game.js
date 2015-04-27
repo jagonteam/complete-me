@@ -18,6 +18,7 @@ const TIME_TO_ANSWER_FOR_QUESTION = 15000;
 /**
  * Game phases
  */
+const GAME_PHASE_INIT = 0;
 const GAME_PHASE_WAITING = 1;
 const GAME_PHASE_QUESTION = 2;
 
@@ -27,7 +28,7 @@ export class Game {
     constructor(sockets_io) {
         this.sockets = sockets_io;
         this.currentQuestion = "";
-        this.phase = GAME_PHASE_WAITING;
+        this.phase = GAME_PHASE_INIT;
 
         // listen for new users
         this.sockets.on('connection', (socket) => {
@@ -35,66 +36,64 @@ export class Game {
         });
 
         // launch questions loop
-        this.sendWaitBeetwenQuestion();
+        this.runGame();
     }
 
     /**
-     * Move to the given phase if it's not the current phase.
-     * @return : true if the phase has been change, false otherwise.
+     * Handle game phases
      */
-    _nextPhase(phase) {
-        if (this.currentPhase == phase) {
-            return false;
+    runGame() {
+
+        // next phase is waiting until next question
+        if (this.phase == GAME_PHASE_INIT || this.phase == GAME_PHASE_QUESTION) {
+            this.phase = GAME_PHASE_WAITING;
+
+            this.startTime = new Date().getTime();
+            this.timeout = TIME_BETWEEN_QUESTIONS;
+
+            this.sendWaitBeetwenQuestion();
         }
-        this.currentPhase = phase;
-        return true;
+
+        // next phase is sending question
+        else if (this.phase == GAME_PHASE_WAITING) {
+
+            this.phase = GAME_PHASE_QUESTION;
+
+            this.startTime = new Date().getTime();
+            this.timeout = TIME_TO_ANSWER_FOR_QUESTION;
+
+            // @todo #1 : random question before broadcast
+            this.sendCurrentQuestion();
+        }
+
+        // Timeout for next phase
+        setTimeout(() => {
+            this.runGame();
+        }, this.timeout);
     }
 
     /**
      * Time to go to next questions ! Get it and send it to client
      */
     sendCurrentQuestion(destination = this.sockets) {
-        logger.verbose("next question");
-
-        if (this._nextPhase(GAME_PHASE_QUESTION)) { // phase has changed !
-            // @todo #1 : random question before broadcast
-            this.broadcastCurrentQuestion();
-
-            // launch next question timer
-            setTimeout(() => {
-                this.sendWaitBeetwenQuestion();
-            }, TIME_TO_ANSWER_FOR_QUESTION);
-
-        } else { // phase hasn't change, but new client is connected (send him infos)
-            this.broadcastCurrentQuestion(destination);
-        }
+        destination.emit('quiz:question', {
+            text: "What is the day today ?",
+            needResponse: true,
+            time: TIME_TO_ANSWER_FOR_QUESTION,
+            startTime: new Date().getTime()
+        });
     }
 
     /**
      * Wait beetwen questions, wait and said it to client
      */
     sendWaitBeetwenQuestion(destination = this.sockets) {
-        logger.verbose("wait until next question");
-        if (this._nextPhase(GAME_PHASE_WAITING)) { // phase has changed !
-
-            // broacast wait message
-            destination.emit('quiz:question', {
-                text: "La prochaine question arrive bientôt !",
-                needResponse: false,
-                time: TIME_BETWEEN_QUESTIONS
-            });
-
-            // launch wait timer
-            setTimeout(() => {
-                this.sendCurrentQuestion();
-            }, TIME_BETWEEN_QUESTIONS);
-        } else { // phase hasn't change, but new client is connected (send him infos)
-            destination.emit('quiz:question', {
-                text: "Bienvenue ! Le jeu commence bientôt !",
-                needResponse: false,
-                time: TIME_BETWEEN_QUESTIONS
-            });
-        }
+        destination.emit('quiz:question', {
+            text: "La prochaine question arrive bientôt !",
+            needResponse: false,
+            time: this.timeout,
+            startTime: this.startTime
+        });
     }
 
     /**
@@ -119,23 +118,13 @@ export class Game {
      * Handle new user, send him the rugth data
      */
     handleNewUser(socket) {
-        if (this.phase == GAME_PHASE_WAITING) {
+        if (this.phase == GAME_PHASE_WAITING || this.phase == GAME_PHASE_INIT) {
             this.sendWaitBeetwenQuestion(socket);
         } else if (this.phase == GAME_PHASE_QUESTION) {
             this.sendCurrentQuestion(socket);
         } else {
             logger.warn("Undefined log phase in handleNewUser : " + this.phase);
         }
-    }
-
-    /**
-     * Send current question to all connected users
-     */
-    broadcastCurrentQuestion(destination = this.sockets) {
-        destination.emit('quiz:question', {
-            text: "What is the day today ?",
-            needResponse: true
-        });
     }
 
     /**
