@@ -1,4 +1,4 @@
-# complete-me
+# complete-me [![Build Status](https://travis-ci.org/jagonteam/complete-me.svg)](https://travis-ci.org/jagonteam/complete-me)
 
 ## Quick start
 
