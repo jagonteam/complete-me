@@ -53,6 +53,7 @@ Open your browser, and browse to http://127.0.0.1:8080
 
 To re-index answers, you need to enable http authentication. To do that, copy `private/users.htpasswd.example` to `private/users.htpasswd`.
 Re-start node server, you'll see an information message : "Using http authentification file".
+If authentication is not enabled, admin API won't be exposed.
 
 To start crawling, you have to hit the exposed API, with auth :
 
