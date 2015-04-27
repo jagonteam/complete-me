@@ -7,6 +7,8 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     babel = require('gulp-babel'),
     mocha = require('gulp-mocha');
+    concat      = require('gulp-concat'),
+    uglify      = require('gulp-uglify');
 
 var paths = {
     scripts: [
@@ -14,9 +16,19 @@ var paths = {
         'server/**/*.js',
         'test/**/*.js',
         'gulpfile.js'
-    ],
-    test: 'test/**/*.js'
-};
+  ],
+  minify: [
+    'assets/js/*.js',
+    'server.js',
+    'utils/*.js',
+    'build/*.js'
+
+gulp.task('minify-js', function() {
+    gulp.src(paths.minify)
+    .pipe(concat('app.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'))
+});
 
 gulp.task('verify-js', function() {
     gulp.src(['client/js/*.js'])
