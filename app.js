@@ -30,11 +30,11 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
+app.set('port', process.env.PORT || 8080);
 app.use(methodOverride());
 app.use(express.static(publicPath));
 
-server.listen(app.get('port'), process.env.OPENSHIFT_NODEJS_IP || server.INADDR_ANY, function() {
+server.listen(app.get('port'), process.env.HOST || server.INADDR_ANY, function() {
     logger.info('Express server listening on port ' + app.get('port'));
 });
 
