@@ -10,51 +10,39 @@
 
     <title>Complete me !</title>
 
-    <link href="/inc/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/inc/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/inc/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/left-bar.css">
 
     <script src="/inc/jquery/dist/jquery.min.js"></script>
     <script src="/inc/angular/angular.min.js"></script>
     <script src="/inc/angular-route/angular-route.min.js"></script>
     <script src="/inc/angular-resource/angular-resource.min.js"></script>
-    <script src="/inc/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/inc/angular-animate/angular-animate.min.js"></script>
+    <script src="/inc/angular-aria/angular-aria.min.js"></script>
+    <script src="/inc/angular-material/angular-material.min.js"></script>
+
     <script src="/socket.io/socket.io.js"></script>
 
     <script src="/js/application.js"></script>
+
+    <script src="/js/controller.header.js"></script>
+    <script src="/js/controller.leftbar.js"></script>
+    <script src="/js/controller.login.js"></script>
     <script src="/js/controller.quiz.js"></script>
 </head>
 
 <body role="document">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/">Complete me !</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#/">Quiz</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Header Bar -->
+    <div ng-include="'html/header.html'"></div>
 
+    <!-- Left side Bar -->
+    <div ng-include="'html/left-bar.html'"></div>
 
-    <div class="container theme-showcase" role="main">
-        <br/>
-        <br/>
-        <br/>
-        <div ng-view="quiz">
-        </div>
-    </div>
+    <!-- Login view -->
+    <div ng-view="login"></div>
 
 </body>
-
 </html>

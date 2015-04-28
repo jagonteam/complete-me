@@ -1,0 +1,24 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+  <md-toolbar class="md-theme-light">
+    <h1 class="md-toolbar-tools">Choix de la partie</h1>
+  </md-toolbar>
+  <md-content ng-controller="LeftBarController" layout-padding>
+    <h2 class="md-toolbar-tools">Créer une partie</h2>
+    <form>
+      <md-input-container>
+        <label for="testInput">Nom d'une partie</label>
+        <input type="text" id="inputNewParty" ng-model="data" md-sidenav-focus/>
+      </md-input-container>
+    </form>
+    <h2 class="md-toolbar-tools">Rejoindre une partie</h2>
+    <div class="cm-party-list">
+      <md-button class="md-raised md-primary">#jaimelepimentdespelette 5/10</md-button>
+      <md-button class="md-raised md-primary">#jagonteam 3/10</md-button>
+      <md-button ng-disabled="true" class="md-raised md-primary">#completemegame 10/10</md-button>
+      <md-button class="md-raised md-primary">#lenetcestchouette 8/10</md-button>
+    </div>
+    <md-button ng-click="close()" class="md-primary">
+      Fermer
+    </md-button>
+  </md-content>
+</md-sidenav>
