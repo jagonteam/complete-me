@@ -35,9 +35,11 @@
     "gulp-jsbeautifier": "0.0.4",
     "gulp-util": "~3.0.4",
     "mocha": "^2.2.4",
-    "run-sequence": "~1.0.2"
+    "run-sequence": "~1.0.2",
+    "bower": "^1.4.1"
   },
   "scripts": {
+    "postinstall": "gulp transpilation && ./node_modules/bower/bin/bower install",
     "start": "node app.js",
     "test": "gulp test"
   },
