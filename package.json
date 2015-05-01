@@ -57,7 +57,7 @@
   },
   "scripts": {
     "postinstall": "gulp transpilation && ./node_modules/bower/bin/bower install",
-    "start": "node app.js",
+    "start": "node server/app.js",
     "test": "gulp test"
   },
   "bundleDependencies": [],
