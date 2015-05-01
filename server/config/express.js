@@ -39,12 +39,13 @@ module.exports = function(app, socketio) {
     app.use(express.static(app.get('appPath')));
 
     if ('production' === env) {
-        app.use(favicon(path.join(app.use('appPath'), 'favicon.ico')));
+        //app.use(favicon(path.join(app.use('appPath'), 'favicon.ico')));
+        app.use(errorHandler());
     }
 
     if ('development' === env) {
         app.use(require('connect-livereload')());
-        app.use(errorHandler()); // Error handler - has to be last
+        app.use(errorHandler({ dumpExceptions: true, showStack: true }))
     }
 
     // Start the game !
