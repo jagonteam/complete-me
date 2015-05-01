@@ -1,10 +1,10 @@
 var winston = require('winston');
 var fs = require('fs');
 
-// Configure logger 
+// Configure logger
 // ----------------
-if (!fs.existsSync('./logs')) {
-    fs.mkdirSync('./logs');
+if (!fs.existsSync('../logs')) {
+    fs.mkdirSync('../logs');
 }
 
 winston.emitErrs = true;

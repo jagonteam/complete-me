@@ -3,7 +3,7 @@
 
 'use strict';
 
-var logger = require("../utils/logger");
+var logger = require("../../utils/logger");
 
 /*
  * Time that you wait until the next question

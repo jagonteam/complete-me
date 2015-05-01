@@ -69,6 +69,7 @@ angular
         });
 
 
+
         /**
          * Get current progress according to current phase
          */

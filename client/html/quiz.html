@@ -1,0 +1,16 @@
+<div ng-controller="QuizController">
+    <h2>{{question.text}}</h2>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{currentProgression}}" aria-valuemin="0" aria-valuemax="100" style="width: {{currentProgression}}%;">
+            <span class="sr-only">{{currentProgression}}% Complete</span>
+        </div>
+    </div>
+    <form ng-if="question.needResponse" ng-submit="submitAnswer()">
+        <input type="text" ng-model="answer.text" placeholder="{{answer.placeholder}}" />
+        <input type="submit" id="submit" value="Envoyer !" />
+    </form>
+
+    <md-progress-linear class="md-accent" md-mode="query" value="{{progress-linear-determinate-value}}">
+</div>
+</div>

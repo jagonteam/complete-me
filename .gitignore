@@ -30,7 +30,22 @@ node_modules
 .vagrant
 
 # bower
-inc/
+client/inc/
 
 # generated sources
 build/
+
+.gitconfig
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Idea
+.idea

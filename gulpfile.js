@@ -10,11 +10,8 @@ var gulp = require('gulp'),
 
 var paths = {
     scripts: [
-        'assets/js/*.js',
-        'server.js',
-        'controllers/**/*.js',
-        'utils/**/*.js',
-        'tools/**/*.js',
+        'client/js/*.js',
+        'server/**/*.js',
         'test/**/*.js',
         'gulpfile.js'
     ],
@@ -22,7 +19,7 @@ var paths = {
 };
 
 gulp.task('verify-js', function() {
-    gulp.src(['assets/js/*.js'])
+    gulp.src(['client/js/*.js'])
         .pipe(prettify({
             config: '.jsbeautifyrc',
             mode: 'VERIFY_ONLY'
@@ -41,13 +38,13 @@ gulp.task('prettify-js', function() {
 });
 
 gulp.task('prettify-html', function() {
-    gulp.src(['assets/**/*.html'])
+    gulp.src(['client/**/*.html'])
         .pipe(prettify({
             braceStyle: "collapse",
             indentChar: " ",
             indentSize: 4
         }))
-        .pipe(gulp.dest('assets/'));
+        .pipe(gulp.dest('client/'));
 });
 
 gulp.task('prettify-code', function() {
@@ -57,11 +54,11 @@ gulp.task('prettify-code', function() {
 });
 
 gulp.task('transpilation', function() {
-    gulp.src(['controllers/**/*.js', 'tools/**/*.js'])
+    gulp.src(['server/**/*.js'])
         .pipe(babel({
             highlightCode: false
         }))
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('build/'))
         .on('error', gutil.log);
 });
 
