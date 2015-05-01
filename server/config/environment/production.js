@@ -5,13 +5,11 @@
 module.exports = {
     // Server IP
     ip: process.env.HOST ||
-        process.env.OPENSHIFT_NODEJS_IP ||
         undefined,
 
     // Server port
-    port: process.env.OPENSHIFT_NODEJS_PORT ||
-        process.env.PORT ||
-        8080,
+    port: process.env.PORT ||
+        9000,
 
     // MongoDB connection options
     mongo: {
