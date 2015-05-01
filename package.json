@@ -42,11 +42,11 @@
     "request": "^2.55.0",
     "serve-favicon": "^2.2.0",
     "socket.io": "~1.2.1",
-    "winston": "~0.8.3"
+    "winston": "~0.8.3",
+    "gulp": "~3.8.11"
   },
   "devDependencies": {
     "babel-core": "^5.1.2",
-    "gulp": "~3.8.11",
     "gulp-babel": "^5.1.0",
     "gulp-mocha": "^2.0.1",
     "gulp-jsbeautifier": "0.0.4",
@@ -56,6 +56,7 @@
     "bower": "^1.4.1"
   },
   "scripts": {
+    "build": "gulp",
     "postinstall": "gulp transpilation && ./node_modules/bower/bin/bower install",
     "start": "node server/app.js",
     "test": "gulp test"
