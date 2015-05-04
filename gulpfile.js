@@ -7,6 +7,9 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     babel = require('gulp-babel'),
     mocha = require('gulp-mocha');
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    minifyCss = require('gulp-minify-css');
 
 var paths = {
     scripts: [
@@ -15,8 +18,30 @@ var paths = {
         'test/**/*.js',
         'gulpfile.js'
     ],
+    minify: [
+        'assets/js/*.js',
+        'server.js',
+        'utils/*.js',
+        'build/*.js'
+    ],
+    style: [
+        'css/*.css'
+    ],
     test: 'test/**/*.js'
 };
+
+gulp.task('minify-js', function() {
+    gulp.src(paths.minify)
+        .pipe(concat('app.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('minify-css', function() {
+    gulp.src(paths.style)
+        .pipe(minifyCss())
+        .pipe(gulp.dest('dist/style.css'));
+})
 
 gulp.task('verify-js', function() {
     gulp.src(['client/js/*.js'])
@@ -64,12 +89,12 @@ gulp.task('transpilation', function() {
 
 gulp.task('run-test', function() {
     gulp.src(paths.test, {
-            read: false
-        })
-        .pipe(mocha({
-            reporter: 'spec'
-        }))
-        .on('error', gutil.log);
+      read: false
+    })
+    .pipe(mocha({
+      reporter: 'spec'
+    }))
+    .on('error', gutil.log);
 });
 
 gulp.task('test', function() {

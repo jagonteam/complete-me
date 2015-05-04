@@ -34,7 +34,7 @@ client/inc/
 
 # generated sources
 build/
-
+dist/
 .gitconfig
 
 # OS generated files #
