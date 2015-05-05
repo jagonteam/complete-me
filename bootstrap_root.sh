@@ -5,7 +5,7 @@
 #
 
 # constants
-ES_VERSION=1.5.1
+ES_VERSION=1.5.2
 
 
 	#=================#

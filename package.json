@@ -33,6 +33,7 @@
     "lodash": "^3.7.0",
     "method-override": "~1.0.0",
     "mongoose": "^4.0.2",
+	"machines-elastic" : "^0.2.0",
     "passport": "^0.2.1",
     "passport-facebook": "^2.0.0",
     "passport-github": "^0.1.5",

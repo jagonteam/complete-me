@@ -27,13 +27,17 @@ bower install --config.interactive=false
 gulp transpilation
 
 
+## make sur service is started
+sudo service elasticsearch start
+sleep 10
+
 echo -e " \n \n "
-echo "____________________________________________________________________________________"
+echo "_____________________________________________________________________________________"
 echo "Congratulation ! You can now launch node server with 'node server/app.js' in $(pwd)"
 echo "---"
 echo "Forwarded ports (available on your host) :"
 echo "  * node server  : 8080"
 echo "  * elastic HTTP : 9200"
 echo "  * elastic TCP  : 9300"
-echo "____________________________________________________________________________________"
+echo "_____________________________________________________________________________________"
 echo -e " \n "
