@@ -12,7 +12,7 @@ Start the application, in VM :
 
     vagrant ssh
     cd /vagrant
-    node server/app.js
+    node build/app.js
 
 Open your browser : http://127.0.0.1:9000
 
@@ -44,7 +44,7 @@ Now, you need to convert ES6 sources to ES5.
 
 You can now start server :)
 
-    node server/app.js
+    node build/app.js
 
 Open your browser, and browse to http://127.0.0.1:9000
 

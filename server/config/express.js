@@ -18,8 +18,8 @@ var express = require('express'),
     logger = require('../utils/logger');
 
 // transpiled dependencies
-var game = require('../../build/api/game/game'),
-    admin = require('../../build/api/administration/administration');
+var game = require('../api/game/game'),
+    admin = require('../api/administration/administration');
 
 var httpAuthentificationFilePath = config.root + '/private/users.htpasswd';
 

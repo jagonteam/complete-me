@@ -32,12 +32,12 @@ sudo service elasticsearch start
 sleep 10
 
 echo -e " \n \n "
-echo "_____________________________________________________________________________________"
-echo "Congratulation ! You can now launch node server with 'node server/app.js' in $(pwd)"
+echo "____________________________________________________________________________________"
+echo "Congratulation ! You can now launch node server with 'node build/app.js' in $(pwd)"
 echo "---"
 echo "Forwarded ports (available on your host) :"
 echo "  * node server  : 8080"
 echo "  * elastic HTTP : 9200"
 echo "  * elastic TCP  : 9300"
-echo "_____________________________________________________________________________________"
+echo "____________________________________________________________________________________"
 echo -e " \n "
