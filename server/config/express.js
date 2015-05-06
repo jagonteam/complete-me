@@ -45,7 +45,10 @@ module.exports = function(app, socketio) {
 
     if ('development' === env) {
         app.use(require('connect-livereload')());
-        app.use(errorHandler({ dumpExceptions: true, showStack: true }))
+        app.use(errorHandler({
+            dumpExceptions: true,
+            showStack: true
+        }))
     }
 
     // Start the game !
