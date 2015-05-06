@@ -27,10 +27,6 @@ bower install --config.interactive=false
 gulp transpilation
 
 
-## make sur service is started
-sudo service elasticsearch start
-sleep 10
-
 echo -e " \n \n "
 echo "____________________________________________________________________________________"
 echo "Congratulation ! You can now launch node server with 'node build/app.js' in $(pwd)"
