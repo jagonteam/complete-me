@@ -13,6 +13,7 @@ angular
         $scope.answer = {
             placeholder: "Entez votre réponse ici !"
         };
+        $scope.answers = [];
         $scope.currentProgression = 0;
         setInterval(function() {
             updateCurrentProgression();
@@ -60,11 +61,8 @@ angular
          */
         socket.on('quiz:answer-feedback', function(feedback) {
             $scope.$apply(function() {
-                if (feedback.validated) {
-                    console.debug("answer is validated by server :)");
-                } else {
-                    console.debug("answer is not validated by server :(");
-                }
+                console.debug("answer from server : " + JSON.stringify(feedback));
+                $scope.answers = feedback;
             });
         });
 

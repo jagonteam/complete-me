@@ -1,40 +1,40 @@
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"du viagra","rank":1,"query":[{"text":"Comment se procurer"}]}
+{"text":"du viagra","rank":0,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"un acte de naissance","rank":2,"query":[{"text":"Comment se procurer"}]}
+{"text":"un acte de naissance","rank":1,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"une arme","rank":3,"query":[{"text":"Comment se procurer"}]}
+{"text":"une arme","rank":2,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"la pilule","rank":4,"query":[{"text":"Comment se procurer"}]}
+{"text":"la pilule","rank":3,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"drogue violeur","rank":5,"query":[{"text":"Comment se procurer"}]}
+{"text":"drogue violeur","rank":4,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"du cyanure","rank":6,"query":[{"text":"Comment se procurer"}]}
+{"text":"du cyanure","rank":5,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"de la drogue","rank":7,"query":[{"text":"Comment se procurer"}]}
+{"text":"de la drogue","rank":6,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"un extrait de casier judiciaire","rank":8,"query":[{"text":"Comment se procurer"}]}
+{"text":"un extrait de casier judiciaire","rank":7,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"du canabis","rank":9,"query":[{"text":"Comment se procurer"}]}
+{"text":"du canabis","rank":8,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"une kalachnikov","rank":10,"query":[{"text":"Comment se procurer"}]}
+{"text":"une kalachnikov","rank":9,"query":[{"text":"Comment se procurer"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"de fumer","rank":1,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"de fumer","rank":0,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"le temps","rank":2,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"le temps","rank":1,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"de boire","rank":3,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"de boire","rank":2,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"de travailler","rank":4,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"de travailler","rank":3,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"de manger","rank":5,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"de manger","rank":4,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"la pilule","rank":6,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"la pilule","rank":5,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"de penser","rank":7,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"de penser","rank":6,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"ma pilule","rank":8,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"ma pilule","rank":7,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"le canabis","rank":9,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"le canabis","rank":8,"query":[{"text":"Je voudrais arrêter"}]}
 { "index" : { "_index":"response_1","_type":"response"} }
-{"text":"d'allaiter","rank":10,"query":[{"text":"Je voudrais arrêter"}]}
+{"text":"d'allaiter","rank":9,"query":[{"text":"Je voudrais arrêter"}]}
