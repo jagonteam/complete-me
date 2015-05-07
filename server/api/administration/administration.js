@@ -78,8 +78,7 @@ export class Administration {
                         } else if (result === "response_2") {
                             usedIndex = "response_2";
                             unusedIndex = "response_1";
-                        }
-                        else {
+                        } else {
                             logger.error("Unknown index for getAlias [" + result + "], aborting...");
                             return;
                         }
@@ -159,55 +158,55 @@ export class Administration {
                 logger.info(LOG_TAG + "crawl answers");
 
                 async.eachSeries(queries, (query, callback) => {
-                    this.crawler.getAutocompleteForQuery(query, (answers) => {
-                        logger.verbose(LOG_TAG + query.text + " : [" + answers.join(",") + "]");
-                        logger.verbose(LOG_TAG + "storing answer in elastic...");
+                        this.crawler.getAutocompleteForQuery(query, (answers) => {
+                            logger.verbose(LOG_TAG + query.text + " : [" + answers.join(",") + "]");
+                            logger.verbose(LOG_TAG + "storing answer in elastic...");
 
-                        // [{ index:  { _index: "myindex", _type: "mytype", _id: 2 } }, { title: "foo" } ]
-                        let answerBulk = [];
-                        for (let answerIndex in answers) {
-                            let answer = answers[answerIndex];
-                            answerBulk.push({
-                                index: {}
-                            });
-                            answerBulk.push({
-                                "text": answer,
-                                "rank": answerIndex,
-                                "query": [{
-                                    "text": query.text
-                                }]
-                            });
-                        }
+                            // [{ index:  { _index: "myindex", _type: "mytype", _id: 2 } }, { title: "foo" } ]
+                            let answerBulk = [];
+                            for (let answerIndex in answers) {
+                                let answer = answers[answerIndex];
+                                answerBulk.push({
+                                    index: {}
+                                });
+                                answerBulk.push({
+                                    "text": answer,
+                                    "rank": answerIndex,
+                                    "query": [{
+                                        "text": query.text
+                                    }]
+                                });
+                            }
 
-                        //logger.verbose("result bulk to store : " + JSON.stringify(answerBulk));
-                        Elastic.bulk({
-                            port: ES_PORT,
-                            hostname: ES_HOST,
-                            index: unusedIndex,
-                            type: 'response',
-                            actions: answerBulk
-                        }).exec({
-                            error: (err) => {
-                                logger.error(LOG_TAG + "Cannot search : " + err);
-                                this.isCrawling = false;
-                                return;
-                            },
-                            couldNotConnect: () => {
-                                logger.error(LOG_TAG + "Could not connect to elastic");
-                                this.isCrawling = false;
-                                return;
-                            },
-                            success: (result) => {
-                                callback();
-                            },
+                            //logger.verbose("result bulk to store : " + JSON.stringify(answerBulk));
+                            Elastic.bulk({
+                                port: ES_PORT,
+                                hostname: ES_HOST,
+                                index: unusedIndex,
+                                type: 'response',
+                                actions: answerBulk
+                            }).exec({
+                                error: (err) => {
+                                    logger.error(LOG_TAG + "Cannot search : " + err);
+                                    this.isCrawling = false;
+                                    return;
+                                },
+                                couldNotConnect: () => {
+                                    logger.error(LOG_TAG + "Could not connect to elastic");
+                                    this.isCrawling = false;
+                                    return;
+                                },
+                                success: (result) => {
+                                    callback();
+                                },
+                            });
                         });
+                    },
+                    function(err) {
+                        if (!err) {
+                            callbackSerieStep();
+                        }
                     });
-                },
-                function(err) {
-                    if (! err) {
-                        callbackSerieStep();
-                    }
-                });
             },
 
             // 5. switch answer alias
