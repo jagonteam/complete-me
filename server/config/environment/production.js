@@ -21,7 +21,10 @@ module.exports = {
 
     // elastic connection options
     elastic: {
-        host: 'localhost',
-        port: 9200
-    }
+        host: process.env.BONSAI_URL || 'localhost',
+        port: 443
+    },
+
+    // users who can launch crawler
+    crawling_users: (process.env.crawling_users ? JSON.parse(process.env.crawling_users) : [])
 };

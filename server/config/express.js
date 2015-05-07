@@ -21,8 +21,6 @@ var express = require('express'),
 var game = require('../api/game/game'),
     admin = require('../api/administration/administration');
 
-var httpAuthentificationFilePath = config.root + '/private/users.htpasswd';
-
 module.exports = function(app, socketio) {
     var env = app.get('env');
 
@@ -58,16 +56,20 @@ module.exports = function(app, socketio) {
 
     // Adminisation route
     //-------------------
-    if (fs.existsSync(httpAuthentificationFilePath)) {
-        logger.info('Using http authentification file (' + httpAuthentificationFilePath + ')');
-        var basic = auth.basic({
-            realm: "Restricted Area.",
-            file: httpAuthentificationFilePath
-        });
-        app.get('/admin/api/crawl', auth.connect(basic), function(req, res) {
-            administrationArea.crawlAnswers(req, res);
-        });
-    } else {
-        logger.warn('No http authentification file found (' + httpAuthentificationFilePath + '), administration routes are disabled !');
-    }
+    var basic = auth.basic({
+        realm: "Restricted Area.",
+    }, function(username, password, callback) { // Custom authentication method.
+        for (var userIndex in config.crawling_users) {
+            let user = config.crawling_users[userIndex];
+            if (user.user === username && user.pass === password) {
+                callback(true);
+            }
+        }
+        logger.warn("somebody tried to start crawler but has not the rigth to do that (" + username + ")");
+        callback(false);
+    });
+
+    app.get('/admin/api/crawl', auth.connect(basic), function(req, res) {
+        administrationArea.crawlAnswers(req, res);
+    });
 };

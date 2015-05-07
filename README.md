@@ -57,5 +57,5 @@ If authentication is not enabled, admin API won't be exposed.
 
 To start crawling, you have to hit the exposed API, with auth :
 
-    curl '127.0.0.1:9000/admin/api/crawl' --user xavier:xavier
+    curl '127.0.0.1:9000/admin/api/crawl' --user dev_crawler:dev_crawler_pass
 
