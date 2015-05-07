@@ -4,7 +4,7 @@
 'use strict';
 
 import request from 'request';
-import async from 'async';
+import diacritics from 'diacritics';
 
 import {
     Crawler
@@ -31,7 +31,7 @@ export class GoogleCrawler extends Crawler {
             }
 
             var queryResult = JSON.parse(data);
-            var question = queryResult[0];
+            var question = diacritics.remove(queryResult[0]);
             var answers = queryResult[1].map((answer) => {
                 return answer.replace(new RegExp(question, 'g'), '').trim();
             });
