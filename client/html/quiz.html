@@ -11,6 +11,22 @@
         <input type="submit" id="submit" value="Envoyer !" />
     </form>
 
-    <md-progress-linear class="md-accent" md-mode="query" value="{{progress-linear-determinate-value}}">
-</div>
+    <ol>
+        <li ng-repeat="answer in answers">
+            <span ng-if="answer.display">
+                <span ng-if="answer.validated.isValidated">
+                    <b>{{answer.text}}<i>(trouvé par {{answer.validated.by.name}})</i></b>
+                </span>
+                <span ng-if="!answer.validated.isValidated">
+                    {{answer.text}}
+                </span>
+            </span>
+            <span ng-if="!answer.display">
+                {{answer.text}}
+            </span>
+        </li>
+    </ol>
+
+    <md-progress-linear class="md-accent" md-mode="query" value="{{progress-linear-determinate-value}}" />
+
 </div>
