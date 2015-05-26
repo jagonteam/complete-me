@@ -132,7 +132,7 @@ export class Game {
         this.currentQuestionIndex++;
 
         // end of game
-        if (this.currentQuestionIndex >= NUMBER_OF_QUESTION_IN_PARTY || this.currentQuestionIndex >= this.questions.length) {
+        if (this.currentQuestionIndex >= this.questions.length) {
             this._handleGamePhaseInit(callback);
             return;
         }
@@ -173,7 +173,9 @@ export class Game {
      * Initialiation phase
      */
     sendNewPartyMessage(destination = this.sockets) {
-        this._broadcastAnswersState(true);
+        // reset answer array
+        this.sockets.emit('quiz:answer-feedback', []);
+        // send new party message
         destination.emit('quiz:question', {
             text: "La partie (re-?)commence bientôt !",
             needResponse: false,
@@ -187,11 +189,16 @@ export class Game {
      */
     sendWaitBeetwenQuestion(destination = this.sockets) {
         this._broadcastAnswersState(true);
+
+        let waitingText = (this.currentQuestionIndex + 1 >= this.questions.length) ? "La partie est terminée !" : "La prochaine question arrive bientôt !";
+
         destination.emit('quiz:question', {
-            text: "La prochaine question arrive bientôt !",
+            text: waitingText,
             needResponse: false,
             time: this.timeout,
-            startTime: this.startTime
+            startTime: this.startTime,
+            questionIndex: this.currentQuestionIndex + 1,
+            questionCount: this.questions.length
         });
     }
 
@@ -204,21 +211,9 @@ export class Game {
             text: this.questions[this.currentQuestionIndex].text,
             needResponse: true,
             time: this.timeout,
-            startTime: this.startTime
-        });
-    }
-
-    /**
-     * Brodcast current question answers
-     */
-    sendLastQuestionAnswers(destination = this.sockets) {
-        this._broadcastAnswersState(true);
-        destination.emit('quiz:answers', {
-            text: "La partie re-commence bientôt !",
-            needResponse: false,
-            time: this.timeout,
             startTime: this.startTime,
-            answers: this.currentAnswers
+            questionIndex: this.currentQuestionIndex + 1,
+            questionCount: this.questions.length
         });
     }
 
@@ -389,7 +384,7 @@ export class Game {
             query: '{"filter": {"term": {"query.text": "' + question.text + '"}}, "sort":["rank"]}'
         }).exec({
             error: (err) => {
-                logger.error("Could not getRandomQuestionList : " + err);
+                logger.error("Could not getAnswersForQuestion : " + err);
                 return;
             },
             couldNotConnect: () => {
