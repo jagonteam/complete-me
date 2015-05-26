@@ -1,5 +1,9 @@
 <div ng-controller="QuizController">
-    <h2>{{question.text}}</h2>
+    <h2>
+        <span ng-if="question.questionIndex">[{{question.questionIndex}}/{{question.questionCount}}]&nbsp;</span>
+        {{question.text}}
+        <span ng-if="question.needResponse">...</span>
+    </h2>
 
     <div class="progress">
         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{currentProgression}}" aria-valuemin="0" aria-valuemax="100" style="width: {{currentProgression}}%;">
