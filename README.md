@@ -12,7 +12,7 @@ Start the application, in VM :
 
     vagrant ssh
     cd /vagrant
-    node server/app.js
+    node build/app.js
 
 Open your browser : http://127.0.0.1:9000
 
@@ -44,7 +44,7 @@ Now, you need to convert ES6 sources to ES5.
 
 You can now start server :)
 
-    node server/app.js
+    node build/app.js
 
 Open your browser, and browse to http://127.0.0.1:9000
 
@@ -57,5 +57,5 @@ If authentication is not enabled, admin API won't be exposed.
 
 To start crawling, you have to hit the exposed API, with auth :
 
-    curl '127.0.0.1:9000/admin/api/crawl' --user xavier:xavier
+    curl '127.0.0.1:9000/admin/api/crawl' --user dev_crawler:dev_crawler_pass
 

@@ -4,7 +4,7 @@
 'use strict';
 
 import request from 'request';
-import async from 'async';
+import diacritics from 'diacritics';
 
 import {
     Crawler
@@ -31,9 +31,18 @@ export class GoogleCrawler extends Crawler {
             }
 
             var queryResult = JSON.parse(data);
-            var question = queryResult[0];
+            var answerFilters = [
+                queryResult[0].toLowerCase(),
+                diacritics.remove(queryResult[0].toLowerCase()),
+                query.text.toLowerCase(),
+                diacritics.remove(query.text.toLowerCase())
+            ];
             var answers = queryResult[1].map((answer) => {
-                return answer.replace(new RegExp(question, 'g'), '').trim();
+                for (let answerFilterIndex in answerFilters) {
+                    let answerFilter = answerFilters[answerFilterIndex];
+                    answer = answer.toLowerCase().replace(new RegExp(answerFilter, 'g'), '');
+                }
+                return answer.trim();
             });
 
             callback(answers);

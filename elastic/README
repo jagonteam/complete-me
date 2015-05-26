@@ -35,3 +35,9 @@ will return
      ]
   }
 }
+
+== Index initialization with bonsai (on heroku) ==
+
+Just use init.sh :
+
+    ./init.sh 'https://secret_bonsai_with_auth_without_trailing_slash.url' 443

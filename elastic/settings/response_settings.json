@@ -6,21 +6,50 @@
         "default": {
           "type": "custom",
           "tokenizer": "whitespace",
-          "filter": ["lowercase","asciifolding","worddelimiter","elision"]
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "worddelimiter",
+            "french_elision",
+            "french_stop",
+            "french_stemmer"
+          ]
         }
       },
       "filter": {
-         "elision" : {
-             "type" : "elision",
-             "articles" : ["l", "m", "t", "qu", "n", "s", "j"]
-         },
-         "worddelimiter" : {
-             "type" : "word_delimiter",
-             "catenate_words" : true,
-             "catenate_numbers" : true,
-             "split_on_numerics" : false
-         }
-       }
+        "french_elision": {
+          "type": "elision",
+          "articles": [
+            "l",
+            "m",
+            "t",
+            "qu",
+            "n",
+            "s",
+            "j",
+            "d",
+            "c",
+            "jusqu",
+            "quoiqu",
+            "lorsqu",
+            "puisqu"
+          ]
+        },
+        "worddelimiter": {
+          "type": "word_delimiter",
+          "catenate_words": true,
+          "catenate_numbers": true,
+          "split_on_numerics": false
+        },
+        "french_stop": {
+          "type": "stop",
+          "stopwords": "_french_"
+        },
+        "french_stemmer": {
+          "type": "stemmer",
+          "language": "light_french"
+        }
+      }
     }
   }
 }

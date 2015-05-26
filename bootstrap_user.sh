@@ -29,7 +29,7 @@ gulp transpilation
 
 echo -e " \n \n "
 echo "____________________________________________________________________________________"
-echo "Congratulation ! You can now launch node server with 'node server/app.js' in $(pwd)"
+echo "Congratulation ! You can now launch node server with 'node build/app.js' in $(pwd)"
 echo "---"
 echo "Forwarded ports (available on your host) :"
 echo "  * node server  : 8080"
